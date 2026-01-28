@@ -1,0 +1,191 @@
+<!-- page 1 (closed enveloppe)-->
+<!-- =========================
+     index.html  (PAGE 1)
+     Closed envelope landing
+     ========================= -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>You’ve been invited 💌</title>
+
+  <!-- Fonts (similar vibe to the TikTok design) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #f6f1ee;
+      --wine: #6e1b21;
+      --wine-2: #7a2229;
+      --paper: #f7f2ef;
+      --ink: #3a2f31;
+      --pinkwax: #d7a4b0;
+      --shadow: 0 18px 45px rgba(0,0,0,.18);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      background: radial-gradient(1200px 700px at 50% 18%, #ffffff 0%, var(--bg) 55%, #efe7e3 100%);
+      font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      padding: 28px 16px;
+    }
+
+    .wrap{
+      width:min(920px, 100%);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 18px;
+    }
+
+    .envelope-btn{
+      appearance:none;
+      border:none;
+      background:transparent;
+      cursor:pointer;
+      padding:0;
+    }
+
+    .envelope{
+      width:min(720px, 92vw);
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      position:relative;
+      background: linear-gradient(180deg, #7a2229 0%, #5e161c 100%);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    /* little “postage stamps” top-right */
+    .stamps{
+      position:absolute;
+      top: 18px;
+      right: 18px;
+      display:flex;
+      gap: 10px;
+      z-index:2;
+    }
+    .stamp{
+      width: 54px;
+      height: 54px;
+      background: rgba(255,255,255,.88);
+      border-radius: 6px;
+      clip-path: polygon(
+        8% 0%, 92% 0%,
+        92% 8%, 100% 8%, 100% 92%,
+        92% 92%, 92% 100%, 8% 100%,
+        8% 92%, 0% 92%, 0% 8%,
+        8% 8%
+      );
+      display:grid;
+      place-items:center;
+      box-shadow: 0 8px 16px rgba(0,0,0,.18);
+      font-size: 22px;
+    }
+    .stamp.heart{ background: rgba(255,255,255,.92); }
+    .stamp.pink{
+      background: rgba(255,214,226,.95);
+      font-size: 18px;
+    }
+
+    /* center copy */
+    .copy{
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding: 24px;
+      z-index:1;
+    }
+    .copy .script{
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(36px, 6vw, 62px);
+      color: rgba(255,255,255,.9);
+      letter-spacing: .02em;
+      margin:0;
+      line-height:1.05;
+    }
+    .copy .date{
+      margin-top: 8px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(16px, 2.4vw, 22px);
+      color: rgba(255,255,255,.88);
+      letter-spacing: .12em;
+    }
+
+    /* subtle shine */
+    .envelope::after{
+      content:"";
+      position:absolute;
+      inset:-40% -20%;
+      background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.14) 45%, transparent 55%);
+      transform: rotate(10deg);
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .hint{
+      margin-top: 6px;
+      font-family: "Playfair Display", serif;
+      letter-spacing: .18em;
+      text-transform:uppercase;
+      font-size: 18px;
+      color: rgba(58,47,49,.75);
+    }
+
+    .subhint{
+      font-size: 13px;
+      opacity:.65;
+      margin-top:-8px;
+    }
+
+    /* tap animation */
+    .envelope-btn:active .envelope{
+      transform: translateY(2px) scale(.995);
+      transition: transform .05s ease;
+    }
+    .envelope:focus{ outline:none; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <button class="envelope-btn" id="openEnvelope" aria-label="Open invitation envelope">
+      <div class="envelope">
+        <div class="stamps" aria-hidden="true">
+          <div class="stamp heart">💘</div>
+          <div class="stamp pink">💌</div>
+        </div>
+
+        <div class="copy">
+          <div>
+            <p class="script">you’ve been invited</p>
+            <div class="date">14.02.2026</div>
+          </div>
+        </div>
+      </div>
+    </button>
+
+    <div class="hint">CLICK ENVELOPE TO OPEN</div>
+    <div class="subhint">(takes you to the invite)</div>
+  </div>
+
+  <script>
+    document.getElementById("openEnvelope").addEventListener("click", () => {
+      // go to page 2
+      window.location.href = "invite.html";
+    });
+  </script>
+</body>
+</html>
+
